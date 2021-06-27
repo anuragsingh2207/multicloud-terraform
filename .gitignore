@@ -36,3 +36,7 @@ override.tf.json
 
 #Skip executables
 *.exe
+
+#Skip keys
+*.pem
+*.ppk
