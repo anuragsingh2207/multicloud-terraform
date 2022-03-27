@@ -4,6 +4,14 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
+*.lock.hcl
+*.plan
+
+# Key files
+*.ppk
+*.pem
+
+
 
 # Crash log files
 crash.log
