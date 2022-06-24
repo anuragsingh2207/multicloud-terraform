@@ -2,34 +2,34 @@
 
 variable "region" {
 
-default ="ap-south-1"
+  default = "ap-south-1"
 }
 
 # AMI Id
 variable "imageid" {
 
-default =  "ami-0bfea82e3463aabec"
+  default = "ami-0bfea82e3463aabec"
 
 }
 
 
 # Instance Type
 variable "instancetype" {
-    
-    default = "t2.micro"
+
+  default = "t2.micro"
 
 }
 
 # Key
 variable "key" {
 
-    default = "MUMKEY"
+  default = "MUMKEY"
 }
 
 #Security Group
 variable "sg" {
 
-  default = ["DevOpsSG"] 
+  default = ["DevOpsSG"]
 
 }
 
@@ -37,6 +37,6 @@ variable "sg" {
 # Public Key
 variable "pub_key" {
 
-default  = ""
+  default = ""
 
 }

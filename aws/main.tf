@@ -1,16 +1,16 @@
 provider "aws" {
 
-  region="${var.region}"
-  profile="default"
+  region  = var.region
+  profile = "default"
 
 }
 
 # Creating EC2 instances
 resource "aws_instance" "web_server1" {
-  ami             = "${var.imageid}"
-  instance_type   = "${var.instancetype}"
-  key_name        = "${var.key}"
-  security_groups = "${var.sg}" 
+  ami             = var.imageid
+  instance_type   = var.instancetype
+  key_name        = var.key
+  security_groups = var.sg
 
   tags = {
     Name = "web_server1"
@@ -19,10 +19,10 @@ resource "aws_instance" "web_server1" {
 }
 
 resource "aws_instance" "web_server2" {
-  ami             = "${var.imageid}"
-  instance_type   = "${var.instancetype}"
-  key_name        = "${var.key}"
-  security_groups = "${var.sg}" 
+  ami             = var.imageid
+  instance_type   = var.instancetype
+  key_name        = var.key
+  security_groups = var.sg
 
   tags = {
     Name = "web_server2"
@@ -33,7 +33,7 @@ resource "aws_instance" "web_server2" {
 # Creating a new key pair in AWS using terraform
 resource "aws_key_pair" "key1" {
   key_name   = "MUMKEY"
-  public_key =  "${var.pub_key}"
+  public_key = var.pub_key
 }
 
 
@@ -41,14 +41,14 @@ resource "aws_key_pair" "key1" {
 resource "aws_security_group" "sg1" {
   name        = "sg1"
   description = "Allow TLS inbound traffic"
-  vpc_id      = "${aws_vpc.vpc1.id}"
+  vpc_id      = aws_vpc.vpc1.id
 
   ingress {
     description = "TLS from VPC"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["${aws_vpc.vpc1.cidr_block}"]  # using vpc1 cidr_block output
+    cidr_blocks = ["${aws_vpc.vpc1.cidr_block}"] # using vpc1 cidr_block output
   }
 
   egress {
@@ -109,26 +109,26 @@ resource "aws_s3_bucket" "bucket1" {
       days = 90
     }
 
-}
+  }
 
 }
 
 # Creating one more EC2 instance 
 
- resource "aws_instance" "web_server3" {
-  ami             = "${var.imageid}"
-  instance_type   = "${var.instancetype}"
-  key_name        = "${var.key}"
-  security_groups =  ["${aws_security_group.sg1.name}"] #Resource outputs
+resource "aws_instance" "web_server3" {
+  ami             = var.imageid
+  instance_type   = var.instancetype
+  key_name        = var.key
+  security_groups = ["${aws_security_group.sg1.name}"] #Resource outputs
 
   tags = {
     Name = "web_server2"
   }
 
-connection{
-  user          = "ec2-user"
-  private_key  =  "${file(var.private_key_path)}"  # Variable
+  connection {
+    user        = "ec2-user"
+    private_key = file(var.private_key_path) # Variable
+
+  }
 
 }
-
- }

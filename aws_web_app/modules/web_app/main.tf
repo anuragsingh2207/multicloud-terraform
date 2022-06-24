@@ -24,7 +24,7 @@ resource "aws_launch_template" "this" {
 }
 
 resource "aws_autoscaling_group" "this" {
-  availability_zones  = ["us-west-2a","us-west-2b"]
+  availability_zones  = ["us-west-2a", "us-west-2b"]
   vpc_zone_identifier = var.subnets
   desired_capacity    = var.web_desired_capacity
   max_size            = var.web_max_size

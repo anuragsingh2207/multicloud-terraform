@@ -1,27 +1,27 @@
 variable "aws_region" {
-default ="ap-south-1"
+  default = "ap-south-1"
 }
 
 # AMI Id
 variable "imageid" {
-default =  "ami-04bde106886a53080"
+  default = "ami-04bde106886a53080"
 }
 
 
 # Instance Type
 variable "instancetype" {
-    default = "t2.micro"
+  default = "t2.micro"
 }
 
 # Key
 variable "key" {
-    default = "MUMKEY"
+  default = "MUMKEY"
 }
 
 #Security Group
 variable "sg" {
   type    = string
-  default = "DevOpsSG" 
+  default = "DevOpsSG"
 
 }
 
@@ -32,6 +32,6 @@ variable "private_key_path" {}
 
 variable "vpcid" {
 
-default = "vpc-ac4ca1c7 "  // to be changed default vpc id
+  default = "vpc-ac4ca1c7 " // to be changed default vpc id
 
 }

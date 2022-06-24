@@ -1,5 +1,5 @@
 output "dbendpoint" {
-  
-  value = "${module.three-tier.dbendpoint}"
+
+  value = module.three-tier.dbendpoint
 
 }
