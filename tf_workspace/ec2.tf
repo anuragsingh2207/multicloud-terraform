@@ -14,7 +14,7 @@ resource "aws_instance" "myec2" {
 
 }
 
-
+# Creating map variable for instnace shape for different workspaces
 variable "instance_type" {
   type = map(any)
 
